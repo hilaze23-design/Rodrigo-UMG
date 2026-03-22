@@ -1,0 +1,24 @@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+    // Declaración de una matriz: tipo nombre[filas][columnas]
+    // En este ejemplo, una matriz de 2 filas y 3 columnas
+    int numeros[2][3] = {{1, 2, 3}, {4, 5, 6}};
+
+    cout << "Mostrando la matriz completa:" << endl;
+
+    // Para recorrer una matriz necesitamos DOS bucles for (anidados)
+    // El primer bucle (i) recorre las filas
+    for(int i=0; i<2; i++){
+        // El segundo bucle (j) recorre las columnas
+        for(int j=0; j<3; j++){
+            cout << numeros[i][j] << " ";
+        }
+        // Salto de línea al terminar cada fila para que se vea como tabla
+        cout << "\n";
+    }
+
+    return 0;   
+}
