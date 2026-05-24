@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Controlador/Controlador.vcxproj" />
+  <Project Path="Login/Login.vcxproj" Id="f74196dd-0507-42e6-b90e-e428b2287fb8" />
+  <Project Path="Modelo/Modelo.vcxproj" />
+</Solution>
