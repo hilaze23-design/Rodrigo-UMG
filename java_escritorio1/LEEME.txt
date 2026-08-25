@@ -1,0 +1,51 @@
+PROYECTO: java_escritorio1 - CRUD de Clientes (Java + Swing + MySQL)
+Autor: Carlos Alberto Mendez Giron  |  Carnet: 4820-25-11347
+
+-------------------------------------------------------------------
+PASOS PARA EJECUTAR EN APACHE NETBEANS 64-bit
+-------------------------------------------------------------------
+1. Inicie MySQL (XAMPP -> Start MySQL, o su servidor MySQL).
+
+2. Ejecute el script de base de datos (carpeta "database"):
+   - Si va a crear la BD desde cero:
+       database/db_empresa_programacion1.sql
+   - Si YA tiene la BD y no quiere perder datos:
+       database/alter_clientes.sql
+
+3. En NetBeans:  File > Open Project...  y seleccione la carpeta
+   java_escritorio1.
+
+4. Si el driver aparece con un signo de admiracion, haga clic derecho
+   en el proyecto > Properties > Libraries > Add JAR/Folder y agregue
+   el archivo mysql-connector-j-26.7.0.jar que viene en esta carpeta.
+
+5. Clic derecho en el proyecto > Clean and Build, luego Run (F6).
+   La clase principal es: vista.main
+
+-------------------------------------------------------------------
+DATOS DE CONEXION (modelo/Conexion.java)
+-------------------------------------------------------------------
+   Base de datos : db_empresa_programacion1
+   Usuario       : root
+   Contrasena    : (vacia)
+Si su MySQL tiene contrasena, cambiela en la variable "contra".
+
+-------------------------------------------------------------------
+CAMBIOS REALIZADOS
+-------------------------------------------------------------------
+1. Tabla clientes: se agregaron activo (BIT), fecha_ingreso_registro
+   (DATETIME) y fecha_eliminacion (DATETIME NULL).
+
+2. leer()    -> SELECT ... WHERE activo = 1  (solo clientes activos)
+
+3. crear()   -> INSERT que asigna solo, sin pedirlo al usuario:
+                activo = 1, fecha_ingreso_registro = NOW(),
+                fecha_eliminacion = NULL
+                (el Java Form NO se modifico)
+
+4. borrar()  -> ya NO usa DELETE. Ahora hace eliminacion logica:
+                UPDATE clientes SET activo = 0, fecha_eliminacion = NOW()
+                WHERE id_cliente = ?
+                El registro se conserva en la BD con la fecha y hora
+                exacta de la desactivacion, pero deja de aparecer en
+                el listado.
