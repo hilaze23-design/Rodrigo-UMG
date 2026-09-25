@@ -1,0 +1,44 @@
+### Pruebas de la API de Clientes
+### En Visual Studio / VS Code (extensión REST Client) haz clic en "Send Request" sobre cada bloque.
+
+@host = http://localhost:5062
+
+### 1. GET - Listado completo de clientes
+GET {{host}}/api/Clientes
+Accept: application/json
+
+### 2. POST - Registrar un nuevo cliente
+POST {{host}}/api/Clientes
+Content-Type: application/json
+
+{
+  "CUI": "1234567890101",
+  "NIT": "1234567-8",
+  "Nombres": "Juan Carlos",
+  "Apellidos": "Pérez López",
+  "Direccion": "5a. Avenida 10-20, Zona 1, Ciudad de Guatemala",
+  "Telefono": "5555-1234",
+  "Fecha_Nacimiento": "1995-06-15"
+}
+
+### 3. GET por ID - Obtener un cliente específico
+GET {{host}}/api/Clientes/1
+Accept: application/json
+
+### 4. PUT - Actualizar un cliente existente
+PUT {{host}}/api/Clientes/1
+Content-Type: application/json
+
+{
+  "Id_cliente": 1,
+  "CUI": "1234567890101",
+  "NIT": "CF",
+  "Nombres": "Juan Carlos",
+  "Apellidos": "Pérez López",
+  "Direccion": "Calzada Roosevelt 22-43, Zona 11, Ciudad de Guatemala",
+  "Telefono": "4123-4567",
+  "Fecha_Nacimiento": "1995-06-15"
+}
+
+### 5. DELETE - Eliminar un cliente
+DELETE {{host}}/api/Clientes/1
